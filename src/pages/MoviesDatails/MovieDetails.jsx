@@ -18,7 +18,6 @@ export const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [errorMas, setErrorMas] = useState(null);
   const { movieId } = useParams();
-  console.log(movieId);
 
   useEffect(() => {
     const getMovieById = async () => {
@@ -28,8 +27,6 @@ export const MovieDetails = () => {
         );
 
         const data = respons.data;
-
-        // console.log(data.release_date.split('-')[0]);
 
         const movieObj = {
           title: data.title || data.name,
@@ -42,7 +39,6 @@ export const MovieDetails = () => {
 
         setMovie(movieObj);
       } catch (error) {
-        console.log(error);
         setErrorMas(
           'Sorry, but there is no detailed information about this movie, choose another movie =('
         );
@@ -51,8 +47,6 @@ export const MovieDetails = () => {
 
     getMovieById();
   }, [movieId]);
-
-  console.log(movie);
 
   return (
     <MovieDatailsContainer>
