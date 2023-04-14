@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { API_KEY } from 'settings/moviesAPI';
 import {
@@ -15,6 +15,7 @@ import {
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     const getPopMovies = async () => {
@@ -48,7 +49,7 @@ export const Home = () => {
         {movies.map(({ id, title, poster }) => {
           return (
             <MoviesPopItem key={id}>
-              <Link to={`movies/${id}`}>
+              <Link to={`movies/${id}`} state={{ from: location }}>
                 <MoviesPopItemImg src={poster} alt={title} />
                 <MoviesPopItemPrg>{title}</MoviesPopItemPrg>
               </Link>

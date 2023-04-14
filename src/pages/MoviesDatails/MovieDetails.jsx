@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { Circles } from 'react-loader-spinner';
 import axios from 'axios';
 import { API_KEY } from 'settings/moviesAPI';
@@ -11,12 +11,17 @@ import {
   AdditionalLink,
   MovieDatailsContainer,
   LoaderContainer,
+  ContainerForImgAndDescription,
+  BackLink,
+  ErrorContainer,
+  ErrorPrg,
 } from './MoviesDatails.styles';
-import { ErrorMassage } from 'components/ErrorMassage/ErrorMassage';
 
 export const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [errorMas, setErrorMas] = useState(null);
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/');
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -52,27 +57,30 @@ export const MovieDetails = () => {
     <MovieDatailsContainer>
       {movie ? (
         <Container>
-          <MoviesIdImg src={movie.poster} alt={movie.title} />
-          <DescriptionContainer>
-            <h2>
-              {movie.title} ({movie.date})
-            </h2>
-            <p>User score: {movie.average}</p>
-            <h3>Overview</h3>
-            <p>{movie.overview}</p>
-            <h3>Genres</h3>
-            <p>{movie.genres}</p>
+          <BackLink to={backLinkLocationRef.current}>🠔 Go back</BackLink>
+          <ContainerForImgAndDescription>
+            <MoviesIdImg src={movie.poster} alt={movie.title} />
+            <DescriptionContainer>
+              <h2>
+                {movie.title} ({movie.date})
+              </h2>
+              <p>User score: {movie.average}</p>
+              <h3>Overview</h3>
+              <p>{movie.overview}</p>
+              <h3>Genres</h3>
+              <p>{movie.genres}</p>
 
-            <AdditionalInfo>
-              <h3>Additional information:</h3>
-              <AdditionalLink to={'cast'}>Cast ⇓</AdditionalLink>
-              <AdditionalLink to={'reviews'}>Reviews ⇓</AdditionalLink>
-            </AdditionalInfo>
+              <AdditionalInfo>
+                <h3>Additional information:</h3>
+                <AdditionalLink to={'cast'}>Cast ⇓</AdditionalLink>
+                <AdditionalLink to={'reviews'}>Reviews ⇓</AdditionalLink>
+              </AdditionalInfo>
 
-            <div>
-              <Outlet />
-            </div>
-          </DescriptionContainer>
+              <div>
+                <Outlet />
+              </div>
+            </DescriptionContainer>
+          </ContainerForImgAndDescription>
         </Container>
       ) : (
         (errorMas === null && (
@@ -87,7 +95,12 @@ export const MovieDetails = () => {
               visible={true}
             />
           </LoaderContainer>
-        )) || <ErrorMassage massage={errorMas} />
+        )) || (
+          <ErrorContainer>
+            <BackLink to={backLinkLocationRef.current}>🠔 Go back</BackLink>
+            <ErrorPrg>{errorMas}</ErrorPrg>
+          </ErrorContainer>
+        )
       )}
     </MovieDatailsContainer>
   );

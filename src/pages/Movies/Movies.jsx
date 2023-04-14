@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { API_KEY } from 'settings/moviesAPI';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import {
   MoviesContainer,
   MoviesSearchForm,
@@ -16,6 +16,7 @@ import {
 export const Movies = () => {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const searhQuery = searchParams.get('query');
 
   useEffect(() => {
@@ -78,7 +79,7 @@ export const Movies = () => {
           {movies.map(({ id, title, poster }) => {
             return (
               <li key={id}>
-                <Link to={`${id}`}>
+                <Link to={`${id}`} state={{ from: location }}>
                   <MoviesSearchItemImg src={poster} alt={title} />
                   <MoviesSearchItemPrg>{title}</MoviesSearchItemPrg>
                 </Link>
