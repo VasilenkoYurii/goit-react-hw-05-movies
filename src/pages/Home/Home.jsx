@@ -11,8 +11,6 @@ import {
   PageTitle,
 } from './Home.styled';
 
-//https://api.themoviedb.org/3/trending/all/day?api_key=<<api_key>>
-
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
@@ -21,7 +19,7 @@ const Home = () => {
     const getPopMovies = async () => {
       try {
         const respons = await axios.get(
-          `https:api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
+          `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
         );
         const data = respons.data.results;
         const filteredData = data.map(({ id, title, name, poster_path }) => ({
