@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  padding: 30px;
+  margin: 30px;
+  box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.67);
+  background-color: #fdf0f7;
 `;
 
 export const PageTitle = styled.h1`

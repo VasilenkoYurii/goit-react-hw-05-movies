@@ -33,7 +33,6 @@ export const Home = () => {
         }));
 
         setMovies(filteredData);
-        // console.log(filteredData);
       } catch (error) {
         console.log(error);
       }

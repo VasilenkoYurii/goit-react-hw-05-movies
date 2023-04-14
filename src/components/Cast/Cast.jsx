@@ -18,6 +18,8 @@ export const Cast = () => {
 
         const data = respons.data.cast;
 
+        console.log(data);
+
         const filteredData = data.map(
           ({ character, id, name, profile_path }) => ({
             id,
@@ -40,7 +42,7 @@ export const Cast = () => {
 
   return (
     <>
-      {cast ? (
+      {cast !== null && cast.length !== 0 ? (
         <CastList>
           {cast.map(({ id, name, character, profile }) => {
             return (
@@ -53,7 +55,7 @@ export const Cast = () => {
           })}
         </CastList>
       ) : (
-        <p>Loading...</p>
+        <p>Sorry, but we don't have a list of cast for this movie.</p>
       )}
     </>
   );

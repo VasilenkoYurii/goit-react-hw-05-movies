@@ -65,18 +65,8 @@ export const MovieDetails = () => {
 
             <AdditionalInfo>
               <h3>Additional information:</h3>
-              <AdditionalLink
-                to={'cast'}
-                element={<div>awdawdawdawdawdfttyawd</div>}
-              >
-                Cast ⇓
-              </AdditionalLink>
-              <AdditionalLink
-                to={'reviews'}
-                element={<div>awdawdawdawdawdfttyawd</div>}
-              >
-                Reviews ⇓
-              </AdditionalLink>
+              <AdditionalLink to={'cast'}>Cast ⇓</AdditionalLink>
+              <AdditionalLink to={'reviews'}>Reviews ⇓</AdditionalLink>
             </AdditionalInfo>
 
             <div>
