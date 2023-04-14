@@ -9,6 +9,7 @@ export const MoviesContainer = styled.div`
   padding: 30px;
   box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.67);
   background-color: #fdf0f7;
+  width: 100%;
 `;
 export const MoviesSearchForm = styled.form`
   width: 45%;
