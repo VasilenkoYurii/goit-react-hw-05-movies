@@ -24,9 +24,6 @@ const Home = () => {
           `https:api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`
         );
         const data = respons.data.results;
-
-        console.log(data);
-
         const filteredData = data.map(({ id, title, name, poster_path }) => ({
           id,
           title: title || name,

@@ -17,9 +17,6 @@ export const Cast = () => {
         );
 
         const data = respons.data.cast;
-
-        console.log(data);
-
         const filteredData = data.map(
           ({ character, id, name, profile_path }) => ({
             id,
@@ -30,7 +27,7 @@ export const Cast = () => {
               : 'https://e7.pngegg.com/pngimages/491/220/png-clipart-woman-question-mark-mysterious-people-woman.png',
           })
         );
-        // console.log(filteredData);
+
         setCast(filteredData);
       } catch (error) {
         console.log(error);
