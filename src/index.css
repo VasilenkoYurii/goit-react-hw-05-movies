@@ -42,3 +42,8 @@ p {
 input {
   outline: none;
 }
+
+main {
+  display: flex;
+  justify-content: center;
+}

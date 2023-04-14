@@ -26,3 +26,7 @@ export const StyledLink = styled(NavLink)`
     color: #ff0068;
   }
 `;
+
+export const LoaderContainer = styled.div`
+  margin-top: 50px;
+`;

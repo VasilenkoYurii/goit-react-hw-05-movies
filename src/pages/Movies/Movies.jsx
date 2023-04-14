@@ -13,7 +13,7 @@ import {
   MoviesSearchItemPrg,
 } from './Movies.styled';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -93,3 +93,5 @@ export const Movies = () => {
     </MoviesContainer>
   );
 };
+
+export default Movies;

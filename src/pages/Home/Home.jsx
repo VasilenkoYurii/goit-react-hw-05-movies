@@ -13,7 +13,7 @@ import {
 
 //https://api.themoviedb.org/3/trending/all/day?api_key=<<api_key>>
 
-export const Home = () => {
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const location = useLocation();
 
@@ -60,3 +60,5 @@ export const Home = () => {
     </Container>
   );
 };
+
+export default Home;

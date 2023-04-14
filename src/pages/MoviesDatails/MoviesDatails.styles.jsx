@@ -5,6 +5,7 @@ export const MovieDatailsContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 export const Container = styled.div`
@@ -12,6 +13,8 @@ export const Container = styled.div`
   box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.67);
   background-color: #fdf0f7;
   width: 100%;
+
+  min-height: 1000px;
   position: relative;
 `;
 

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { Circles } from 'react-loader-spinner';
 import axios from 'axios';
@@ -17,7 +17,7 @@ import {
   ErrorPrg,
 } from './MoviesDatails.styles';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const [errorMas, setErrorMas] = useState(null);
   const location = useLocation();
@@ -77,7 +77,9 @@ export const MovieDetails = () => {
               </AdditionalInfo>
 
               <div>
-                <Outlet />
+                <Suspense fallback={<p>loading</p>}>
+                  <Outlet />
+                </Suspense>
               </div>
             </DescriptionContainer>
           </ContainerForImgAndDescription>
@@ -105,3 +107,5 @@ export const MovieDetails = () => {
     </MovieDatailsContainer>
   );
 };
+
+export default MovieDetails;
